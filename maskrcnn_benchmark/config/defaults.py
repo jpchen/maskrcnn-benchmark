@@ -32,7 +32,7 @@ _C.MODEL.CLS_AGNOSTIC_BBOX_REG = False
 # If the WEIGHT starts with a catalog://, like :R-50, the code will look for
 # the path in paths_catalog. Else, it will use it as the specified absolute
 # path
-_C.MODEL.WEIGHT = ""
+_C.MODEL.WEIGHT = "/home/jpchen/IEI/pyro-apps/ig/trimmed_e2e_mask_rcnn_X_101_32x8d_FPN_1x.pth"
 
 
 # -----------------------------------------------------------------------------
@@ -67,9 +67,9 @@ _C.INPUT.VERTICAL_FLIP_PROB_TRAIN = 0.0
 # -----------------------------------------------------------------------------
 _C.DATASETS = CN()
 # List of the dataset names for training, as present in paths_catalog.py
-_C.DATASETS.TRAIN = ()
+_C.DATASETS.TRAIN = ("dtld",)
 # List of the dataset names for testing, as present in paths_catalog.py
-_C.DATASETS.TEST = ()
+_C.DATASETS.TEST = ("dtld",)
 
 # -----------------------------------------------------------------------------
 # DataLoader
@@ -212,7 +212,8 @@ _C.MODEL.ROI_BOX_HEAD.PREDICTOR = "FastRCNNPredictor"
 _C.MODEL.ROI_BOX_HEAD.POOLER_RESOLUTION = 14
 _C.MODEL.ROI_BOX_HEAD.POOLER_SAMPLING_RATIO = 0
 _C.MODEL.ROI_BOX_HEAD.POOLER_SCALES = (1.0 / 16,)
-_C.MODEL.ROI_BOX_HEAD.NUM_CLASSES = 81
+# _C.MODEL.ROI_BOX_HEAD.NUM_CLASSES = 81  # num classes + background
+_C.MODEL.ROI_BOX_HEAD.NUM_CLASSES = 2  # changed jpc - 1 class + background
 # Hidden layer dimension when using an MLP for the RoI box head
 _C.MODEL.ROI_BOX_HEAD.MLP_HEAD_DIM = 1024
 # GN
@@ -389,7 +390,8 @@ _C.MODEL.FBNET.RPN_BN_TYPE = ""
 # Solver
 # ---------------------------------------------------------------------------- #
 _C.SOLVER = CN()
-_C.SOLVER.MAX_ITER = 40000
+# _C.SOLVER.MAX_ITER = 40000
+_C.SOLVER.MAX_ITER = 2000
 
 _C.SOLVER.BASE_LR = 0.001
 _C.SOLVER.BIAS_LR_FACTOR = 2
@@ -411,7 +413,7 @@ _C.SOLVER.CHECKPOINT_PERIOD = 2500
 # Number of images per batch
 # This is global, so if we have 8 GPUs and IMS_PER_BATCH = 16, each GPU will
 # see 2 images per batch
-_C.SOLVER.IMS_PER_BATCH = 16
+_C.SOLVER.IMS_PER_BATCH = 4  # changed jpc from 16
 
 # ---------------------------------------------------------------------------- #
 # Specific test options
@@ -451,7 +453,7 @@ _C.TEST.BBOX_AUG.SCALE_H_FLIP = False
 # ---------------------------------------------------------------------------- #
 # Misc options
 # ---------------------------------------------------------------------------- #
-_C.OUTPUT_DIR = "."
+_C.OUTPUT_DIR = "/home/jpchen/IEI/pyro-apps/ig/data/dtld"
 
 _C.PATHS_CATALOG = os.path.join(os.path.dirname(__file__), "paths_catalog.py")
 
