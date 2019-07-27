@@ -8,7 +8,7 @@ class DatasetCatalog(object):
     DATA_DIR = "datasets"
     DATASETS = {
         "dtld": {
-            "img_dir": "/home/jpchen/IEI/pyro-apps/ig/data/dtld/Berlin",
+            "img_dir": "/home/jpchen/IEI/pyro-apps/ig/data/dtld",
             "ann_file": "/home/jpchen/IEI/pyro-apps/ig/data/dtld/Berlin_all.json"
         },
         "coco_2017_train": {

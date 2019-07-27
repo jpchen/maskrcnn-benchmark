@@ -124,7 +124,7 @@ def main():
     parser = argparse.ArgumentParser(description="PyTorch Object Detection Training")
     parser.add_argument(
         "--config-file",
-        default="",
+        default="configs/e2e_mask_rcnn_X_101_32x8d_FPN_1x.yaml",
         metavar="FILE",
         help="path to config file",
         type=str,
