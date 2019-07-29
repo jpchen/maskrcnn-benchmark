@@ -424,9 +424,11 @@ _C.TEST.EXPECTED_RESULTS_SIGMA_TOL = 4
 # Number of images per batch
 # This is global, so if we have 8 GPUs and IMS_PER_BATCH = 16, each GPU will
 # see 2 images per batch
-_C.TEST.IMS_PER_BATCH = 8
+# _C.TEST.IMS_PER_BATCH = 8
+_C.TEST.IMS_PER_BATCH = 4  # changed jpc from 8
 # Number of detections per image
-_C.TEST.DETECTIONS_PER_IMG = 100
+# _C.TEST.DETECTIONS_PER_IMG = 100
+_C.TEST.DETECTIONS_PER_IMG = 8
 
 # ---------------------------------------------------------------------------- #
 # Test-time augmentations for bounding box detection
